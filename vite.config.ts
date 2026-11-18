@@ -12,7 +12,7 @@ import { arcade, contact, education, faqs, profile, projects, skills } from './s
 const SITE_URL = (
   process.env.SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
-  'https://talmeez-akhtar.vercel.app'
+  'https://talmeezakhtar.vercel.app'
 ).replace(/\/$/, '');
 
 const abs = (path: string) => `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
