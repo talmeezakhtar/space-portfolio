@@ -1,0 +1,8 @@
+node_modules
+dist
+models-src
+.DS_Store
+.taste-skill/chrome*
+*.log
+.impeccable/
+.taste-skill/
