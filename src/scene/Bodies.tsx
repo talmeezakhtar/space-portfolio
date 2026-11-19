@@ -339,10 +339,11 @@ function ArcadeMoon({ body }: { body: Body }) {
   const tier = useGame((s) => s.tier);
   const m = body.model!;
   // The secret reward: a black hole, loaded only once the run is cleared.
-  if (unlocked && tier !== 'low')
+  // The reward shows on every device: phones get a lighter build of the same model.
+  if (unlocked)
     return (
       <GLB
-        file={m.file}
+        file={tier === 'high' ? m.file : 'blackhole-lite.glb'}
         size={m.size}
         radius={body.radius * (m.scale ?? 1)}
         animate={m.animate}

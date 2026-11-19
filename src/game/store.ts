@@ -44,7 +44,9 @@ function detect(): { tier: Tier; touch: boolean } {
   const nav = navigator as Navigator & { deviceMemory?: number };
   const mem = nav.deviceMemory ?? 8;
   const cores = navigator.hardwareConcurrency ?? 8;
-  let tier: Tier = touch ? (mem <= 4 || cores <= 4 ? 'low' : 'med') : 'high';
+  // Phones report modest numbers (iOS Safari caps the core count), so only clearly
+  // weak devices drop to 'low'; the frame-rate monitor lowers resolution if needed.
+  let tier: Tier = touch ? (mem <= 2 || cores <= 2 ? 'low' : 'med') : 'high';
   const q = new URLSearchParams(location.search).get('q');
   if (q === 'low' || q === 'med' || q === 'high') tier = q;
   return { tier, touch };
